@@ -1,4 +1,4 @@
-package dev.danvickmiller.flutterstartertemplate
+package dev.danvickmiller.firebasetoolsdemo
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
