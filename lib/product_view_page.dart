@@ -1,6 +1,8 @@
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 import 'cubits/cart/cart_cubit.dart';
 import 'models/models.dart';
@@ -15,6 +17,17 @@ class ProductViewPage extends StatefulWidget {
 }
 
 class _ProductViewPageState extends State<ProductViewPage> {
+  @override
+  void initState() {
+    GetIt.I<FirebaseAnalytics>().logViewItem(
+        itemId: '${widget.product.id}',
+        itemName: widget.product.name,
+        price: double.parse(widget.product.cost),
+        quantity: 1,
+        itemCategory: 'all');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

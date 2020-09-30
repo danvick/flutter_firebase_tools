@@ -71,12 +71,14 @@ class HomePage extends StatelessWidget {
                               onTap: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                      builder: (_) => ProductViewPage(
-                                            product: state.products[index],
-                                          ),
-                                      settings: RouteSettings(
-                                          name:
-                                              '/products/${state.products[index].id}')),
+                                    builder: (_) => ProductViewPage(
+                                      product: state.products[index],
+                                    ),
+                                    settings: RouteSettings(
+                                      name:
+                                          '/products/${state.products[index].id}',
+                                    ),
+                                  ),
                                 );
                               },
                             ),

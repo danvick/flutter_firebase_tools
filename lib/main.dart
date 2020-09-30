@@ -8,12 +8,14 @@ import 'package:flutter_stetho/flutter_stetho.dart';
 import 'package:flutterreststarter/cubits/cart/cart_cubit.dart';
 import 'package:flutterreststarter/cubits/products/products_cubit.dart';
 import 'package:flutterreststarter/cubits/wish_list/wish_list_cubit.dart';
+import 'package:get_it/get_it.dart';
 
 import 'home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  GetIt.I.registerSingleton<FirebaseAnalytics>(FirebaseAnalytics());
   if (kDebugMode) {
     Stetho.initialize();
   }
@@ -30,7 +32,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static FirebaseAnalytics analytics = FirebaseAnalytics();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      navigatorObservers: [FirebaseAnalyticsObserver(analytics: analytics)],
+      navigatorObservers: [FirebaseAnalyticsObserver(analytics: GetIt.I<FirebaseAnalytics>())],
       home: HomePage(),
     );
   }
