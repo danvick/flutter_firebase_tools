@@ -6,10 +6,10 @@ class WishListCubit extends Cubit<List<Product>> {
 
   toggle(Product item) {
     var list = state;
-    if(state.contains(item)){
-      list = [...state..remove(item)];
-    }else{
-      list = [...state, item];
+    if (state.contains(item)) {
+      list = [...list..remove(item)];
+    } else {
+      list = [...list, item];
     }
     // print(list);
     emit(list);

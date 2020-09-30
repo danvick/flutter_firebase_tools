@@ -11,7 +11,8 @@ class CartCubit extends Cubit<Cart> {
   }
 
   removeItem(CartItem item) {
-    var newList = [...state.items..remove(item)];
+    var oldList = [...state.items];
+    var newList = [...oldList..remove(item)];
     emit(state.copyWith(items: newList));
   }
 }
