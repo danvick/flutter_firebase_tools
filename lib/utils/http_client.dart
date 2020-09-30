@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:dio_firebase_performance/dio_firebase_performance.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -23,6 +24,7 @@ class HttpClient {
       dio.interceptors
         ..add(AuthInterceptor())
         ..add(ErrorInterceptor())
+        ..add(DioFirebasePerformanceInterceptor())
         ..add(DioCacheManager(cacheConfig).interceptor);
 
       if (kDebugMode) {

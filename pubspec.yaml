@@ -30,8 +30,10 @@ dependencies:
   equatable: ^1.2.5
   community_material_icon: ^5.4.55
   firebase_core: ^0.5.0
-  firebase_analytics: ^6.0.0
+  firebase_analytics: ^6.0.1
   get_it: ^5.0.1
+  firebase_performance: ^0.3.2
+  dio_firebase_performance: ^0.1.0
 
 dependency_overrides:
   build_resolvers: 1.3.11
