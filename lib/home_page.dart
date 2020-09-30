@@ -24,7 +24,10 @@ class HomePage extends StatelessWidget {
             icon: Icon(Icons.stars),
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => WishListPage()),
+                MaterialPageRoute(
+                  builder: (_) => WishListPage(),
+                  settings: RouteSettings(name: '/wishlist'),
+                ),
               );
             },
           ),
@@ -32,7 +35,10 @@ class HomePage extends StatelessWidget {
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => ShoppingCartPage()),
+                MaterialPageRoute(
+                  builder: (_) => ShoppingCartPage(),
+                  settings: RouteSettings(name: '/cart'),
+                ),
               );
             },
           ),
@@ -62,9 +68,15 @@ class HomePage extends StatelessWidget {
                                 state.products[index].imageUrl,
                                 fit: BoxFit.contain,
                               ),
-                              onTap: (){
+                              onTap: () {
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (_) => ProductViewPage(product: state.products[index],)),
+                                  MaterialPageRoute(
+                                      builder: (_) => ProductViewPage(
+                                            product: state.products[index],
+                                          ),
+                                      settings: RouteSettings(
+                                          name:
+                                              '/products/${state.products[index].id}')),
                                 );
                               },
                             ),
@@ -105,10 +117,12 @@ class HomePage extends StatelessWidget {
                       listener: (_, __) {
                         print('Updated');
                         Scaffold.of(context).hideCurrentSnackBar();
-                        Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text('Your wishlist has been updated')),);
+                        Scaffold.of(context).showSnackBar(
+                          SnackBar(
+                              content: Text('Your wishlist has been updated')),
+                        );
                       },
-                      listenWhen: (oldList, newList){
+                      listenWhen: (oldList, newList) {
                         return oldList != newList;
                       },
                       builder: (_, wishList) => IconButton(
