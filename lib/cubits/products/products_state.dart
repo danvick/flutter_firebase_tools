@@ -23,7 +23,7 @@ class ProductsStateLoaded extends ProductsState {
 }
 
 class ProductsStateFailed extends ProductsState {
-  final Error err;
+  final Exception err;
 
   ProductsStateFailed(this.err);
   @override
