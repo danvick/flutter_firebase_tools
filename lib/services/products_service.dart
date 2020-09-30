@@ -10,7 +10,7 @@ class ProductsService {
     var response = await HttpClient.instance.dio.get(
       'http://192.168.100.104:3000/products',
       options: buildCacheOptions(
-        Duration(minutes: 10), // Ignore cached data if more than 7 days old
+        Duration(seconds: 5), // Ignore cached data if older than stated duration
         forceRefresh: ignoreCache, //Ignore local cache if this value is true
       ),
     );

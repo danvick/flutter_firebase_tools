@@ -5,17 +5,19 @@ import 'package:flutterreststarter/cubits/wish_list/wish_list_cubit.dart';
 import 'package:flutterreststarter/models/models.dart';
 
 class WishListPage extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(title: Text('Wish List')),
       body: BlocConsumer<WishListCubit, List<Product>>(
         listener: (_, __) {
-          Scaffold.of(context).showSnackBar(SnackBar(
+          _scaffoldKey.currentState.showSnackBar(SnackBar(
               content: Text('Item removed from your wishlist.')),);
         },
         listenWhen: (oldList, newList){
-          return oldList.length != newList.length;
+          return oldList != newList;
         },
         builder: (_, state) {
           return ListView.separated(

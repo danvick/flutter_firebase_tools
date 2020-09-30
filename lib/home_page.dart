@@ -116,7 +116,7 @@ class HomePage extends StatelessWidget {
                           wishList.contains(state.products[index])
                               ? Icons.star
                               : Icons.star_border,
-                          color: Colors.white,
+                          color: Colors.orange,
                         ),
                         onPressed: () {
                           wishListCubit.toggle(state.products[index]);
