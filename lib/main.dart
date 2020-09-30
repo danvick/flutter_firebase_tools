@@ -1,6 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,9 @@ void main() async {
   GetIt.I.registerSingleton<FirebaseAnalytics>(FirebaseAnalytics());
   if (kDebugMode) {
     Stetho.initialize();
+    // await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
   }
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<ProductsCubit>(
